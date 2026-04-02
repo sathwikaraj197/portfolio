@@ -10,7 +10,7 @@ import Footer from './Footer';
 import Chatbot from './Chatbot';
 
 const Portfolio = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (isLoading) {
@@ -42,6 +42,7 @@ const Portfolio = () => {
           <Contact />
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </div>
   );
