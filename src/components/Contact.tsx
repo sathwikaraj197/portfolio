@@ -85,19 +85,28 @@ const Contact = () => {
     setStatus('sending');
 
     try {
-      await emailjs.sendForm(
+      const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         formElementRef.current!,
-        EMAILJS_PUBLIC_KEY
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+        }
       );
+      
+      console.log('EmailJS Success:', result.text);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
       // Reset status after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
-    } catch (error) {
+    } catch (error: any) {
       console.error('EmailJS error:', error);
+      // Log more details if available
+      if (error && typeof error === 'object') {
+        console.error('Error status:', error.status);
+        console.error('Error text:', error.text);
+      }
       setStatus('error');
 
       // Reset status after 5 seconds
@@ -132,14 +141,14 @@ const Contact = () => {
                 <label htmlFor="name" className="block text-foreground mb-2 font-medium">
                   Name
                 </label>
-                <input type="text" id="name" name="user_name" value={formData.name} onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Your name" />
+                <input type="text" id="name" name="name" value={formData.name} onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Your name" />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-foreground mb-2 font-medium">
                   Email
                 </label>
-                <input type="email" id="email" name="user_email" value={formData.email} onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="your.email@example.com" />
+                <input type="email" id="email" name="email" value={formData.email} onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="your.email@example.com" />
               </div>
 
               <div>
