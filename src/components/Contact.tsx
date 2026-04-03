@@ -25,8 +25,12 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current?.children || [], {
         y: 50,
@@ -83,6 +87,7 @@ const Contact = () => {
     }
 
     setStatus('sending');
+    setErrorMessage('');
 
     try {
       const result = await emailjs.sendForm(
@@ -98,19 +103,18 @@ const Contact = () => {
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
-      // Reset status after 5 seconds
-      setTimeout(() => setStatus('idle'), 5000);
+      // Reset status after 10 seconds
+      setTimeout(() => setStatus('idle'), 10000);
     } catch (error: any) {
       console.error('EmailJS error:', error);
-      // Log more details if available
-      if (error && typeof error === 'object') {
-        console.error('Error status:', error.status);
-        console.error('Error text:', error.text);
-      }
       setStatus('error');
+      
+      // Capture detailed error message if available
+      const detail = error?.text || error?.message || 'Please try again or email me directly.';
+      setErrorMessage(detail);
 
-      // Reset status after 5 seconds
-      setTimeout(() => setStatus('idle'), 5000);
+      // Reset status after 10 seconds
+      setTimeout(() => setStatus('idle'), 10000);
     }
   };
 
@@ -175,7 +179,7 @@ const Contact = () => {
 
               {status === 'error' && (
                 <div className="p-4 rounded-lg text-center" style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#f87171' }}>
-                  ❌ Failed to send message. Please try again or email me directly.
+                  ❌ {errorMessage || 'Failed to send message. Please try again or email me directly.'}
                 </div>
               )}
             </form>
