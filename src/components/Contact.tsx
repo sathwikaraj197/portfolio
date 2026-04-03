@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // EmailJS credentials
 const EMAILJS_SERVICE_ID = 'service_vj1rn97';
-const EMAILJS_TEMPLATE_ID = 'template_ixmtb0w';
+const EMAILJS_TEMPLATE_ID = 'template_tog19ec';
 const EMAILJS_PUBLIC_KEY = 'CE0obvmEpytZxpJc2';
 
 const Contact = () => {
