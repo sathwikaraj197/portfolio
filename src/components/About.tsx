@@ -258,7 +258,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-xl opacity-30 animate-pulse" />
               <div className="relative w-full h-full glass rounded-full p-2 hover:shadow-glow-primary transition-all duration-500 group">
                 <div className="w-full h-full cursor-pointer rounded-full overflow-hidden bg-gradient-secondary">
-                  <img src="/Images/profileLogo.jpg" alt="Sathwika Raj Bandaru - AI Engineer" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img src="Images/profileLogo.jpg" alt="Sathwika Raj Bandaru - AI Engineer" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
               </div>
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/30 rounded-full animate-float" />
