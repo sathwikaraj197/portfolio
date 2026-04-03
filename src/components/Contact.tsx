@@ -2,12 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PaperPlaneTilt, GithubLogo, LinkedinLogo, Envelope, Phone, MapPin } from 'phosphor-react';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// EmailJS credentials
+const EMAILJS_SERVICE_ID = 'service_vj1rn97';
+const EMAILJS_TEMPLATE_ID = 'template_ixmtb0w';
+const EMAILJS_PUBLIC_KEY = 'CE0obvmEpytZxpJc2';
+
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  const formContainerRef = useRef<HTMLDivElement>(null);
+  const formElementRef = useRef<HTMLFormElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
@@ -16,6 +23,8 @@ const Contact = () => {
     email: '',
     message: ''
   });
+
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -31,14 +40,14 @@ const Contact = () => {
         }
       });
 
-      gsap.from(formRef.current?.children || [], {
+      gsap.from(formContainerRef.current?.children || [], {
         x: -50,
         opacity: 0,
         duration: 0.8,
         stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: formRef.current,
+          trigger: formContainerRef.current,
           start: "top 80%"
         }
       });
@@ -59,7 +68,7 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const button = e.currentTarget.querySelector('button[type="submit"]');
@@ -73,9 +82,27 @@ const Contact = () => {
       });
     }
 
-    console.log('Form submitted:', formData);
+    setStatus('sending');
 
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formElementRef.current!,
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+
+      // Reset status after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setStatus('error');
+
+      // Reset status after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -99,33 +126,49 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          <div ref={formRef} className="space-y-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div ref={formContainerRef} className="space-y-6">
+            <form ref={formElementRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-foreground mb-2 font-medium">
                   Name
                 </label>
-                <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Your name" />
+                <input type="text" id="name" name="user_name" value={formData.name} onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Your name" />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-foreground mb-2 font-medium">
                   Email
                 </label>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="your.email@example.com" />
+                <input type="email" id="email" name="user_email" value={formData.email} onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} required className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="your.email@example.com" />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-foreground mb-2 font-medium">
                   Message
                 </label>
-                <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows={6} className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none" placeholder="Tell me about your project..." />
+                <textarea id="message" name="message" value={formData.message} onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))} required rows={6} className="w-full px-4 py-3 bg-input glass border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none" placeholder="Tell me about your project..." />
               </div>
 
-              <button type="submit" className="group w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-primary text-primary-foreground rounded-lg font-medium hover:shadow-glow-primary transition-all duration-300 hover:scale-105">
-                Send Message
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="group w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-primary text-primary-foreground rounded-lg font-medium hover:shadow-glow-primary transition-all duration-300 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
                 <PaperPlaneTilt size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               </button>
+
+              {status === 'success' && (
+                <div className="p-4 rounded-lg text-center" style={{ background: 'rgba(34, 197, 94, 0.15)', border: '1px solid rgba(34, 197, 94, 0.3)', color: '#4ade80' }}>
+                  ✅ Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="p-4 rounded-lg text-center" style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#f87171' }}>
+                  ❌ Failed to send message. Please try again or email me directly.
+                </div>
+              )}
             </form>
           </div>
 
