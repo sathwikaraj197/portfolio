@@ -92,7 +92,7 @@ const Hero = () => {
   };
 
   const downloadCV = () => {
-    window.open('/Sathwika Resume.pdf', '_blank');
+    window.open(`${import.meta.env.BASE_URL}Sathwika Resume.pdf`, '_blank');
   };
 
   return (
