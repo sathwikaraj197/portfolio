@@ -92,12 +92,7 @@ const Hero = () => {
   };
 
   const downloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/Images/CodeZenith-Resume.pdf';
-    link.download = 'CodeZenith-Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open('/Sathwika Resume.pdf', '_blank');
   };
 
   return (

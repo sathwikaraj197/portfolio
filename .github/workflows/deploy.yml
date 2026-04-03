@@ -1,4 +1,5 @@
 # Simple GitHub Pages deployment workflow for Vite
+# Triggered update to confirm Actions settings.
 name: Deploy to GitHub Pages
 
 on:
