@@ -15,7 +15,7 @@ const Projects = () => {
       id: 1,
       title: "Medical NLP Intelligence System",
       description: "AI-powered clinical text analysis with medical entity extraction, achieving an F1-score of 0.92 in NER for medical entities and automated clinical document summarization.",
-      image: "/Images/project-1.png",
+      image: "/Images/project-1.jpg",
       tech: ["Python", "NLP", "FastAPI", "Transformers", "SpaCy", "Streamlit"],
       liveUrl: "",
       githubUrl: "https://github.com/sathwikaraj197/medical-nlp-intelligence"
@@ -24,7 +24,7 @@ const Projects = () => {
       id: 2,
       title: "Medical Image Diagnosis System",
       description: "Deep learning system for detecting pneumonia, tumors, and melanoma with 96.4% test accuracy using ResNet-50. Includes Grad-CAM heatmaps for clinically explainable AI diagnostics.",
-      image: "/Images/project-2.png",
+      image: "/Images/project-2.jpg",
       tech: ["Python", "PyTorch", "CNN", "ResNet-50", "Grad-CAM", "OpenCV"],
       liveUrl: "",
       githubUrl: "https://github.com/sathwikaraj197/medai-diagnosis"
@@ -33,7 +33,7 @@ const Projects = () => {
       id: 3,
       title: "Disease Risk Prediction System",
       description: "Multi-disease risk prediction model built on NHANES clinical data, reaching an AUC-ROC of 0.89. Provides calibrated probabilities and interpretability via SHAP global and local explanations.",
-      image: "/Images/project-3.png",
+      image: "/Images/project-3.jpg",
       tech: ["Python", "Machine Learning", "SHAP", "Scikit-learn", "XGBoost", "Streamlit"],
       liveUrl: "",
       githubUrl: "https://github.com/sathwikaraj197/disease-risk-prediction-system"
@@ -42,7 +42,7 @@ const Projects = () => {
       id: 4,
       title: "Real-time Bike Demand Forecasting",
       description: "Real-time forecasting system for bike sharing demand, reducing forecasting error by 15% (MAE) through temporal feature engineering and automated MLOps pipelines.",
-      image: "/Images/project-4.png",
+      image: "/Images/project-4.jpg",
       tech: ["Python", "XGBoost", "Airflow", "Docker", "Scikit-learn"],
       liveUrl: "",
       githubUrl: "https://github.com/Arun949/Real-Time-Bike-Demand-Forecasting"
