@@ -46,15 +46,6 @@ const Projects = () => {
       tech: ["Python", "XGBoost", "Airflow", "Docker", "Scikit-learn"],
       liveUrl: "",
       githubUrl: "https://github.com/Arun949/Real-Time-Bike-Demand-Forecasting"
-    },
-    {
-      id: 5,
-      title: "AI-Powered Modern Portfolio",
-      description: "A high-performance, GSAP-animated portfolio website showcasing AI/ML expertise. Built with a focus on premium aesthetics and smooth user interactions.",
-      image: "/Images/project-5.png",
-      tech: ["React", "Vite", "GSAP", "Tailwind CSS", "TypeScript"],
-      liveUrl: "http://localhost:8080",
-      githubUrl: "https://github.com/sathwikaraj197/portfolio"
     }
   ];
 
