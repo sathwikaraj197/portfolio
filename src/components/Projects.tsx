@@ -46,6 +46,15 @@ const Projects = () => {
       tech: ["Python", "XGBoost", "Airflow", "Docker", "Scikit-learn"],
       liveUrl: "",
       githubUrl: "https://github.com/Arun949/Real-Time-Bike-Demand-Forecasting"
+    },
+    {
+      id: 5,
+      title: "Business Law RAG Assistant",
+      description: "Retrieval-Augmented Generation system for business law queries, combining vector search with LLM-powered synthesis to deliver accurate, source-cited legal answers from a curated corpus.",
+      image: "Images/project-5.png",
+      tech: ["Python", "LangChain", "FAISS", "Transformers", "Streamlit", "RAG"],
+      liveUrl: "",
+      githubUrl: "https://github.com/sathwikaraj197/business-law-rag"
     }
   ];
 

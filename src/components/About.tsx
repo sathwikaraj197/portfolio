@@ -22,6 +22,7 @@ const skills: SkillDetail[] = [
       { project: 'Medical Image Diagnosis System', detail: 'PyTorch model training, Grad-CAM visualisation.' },
       { project: 'Disease Risk Prediction System', detail: 'Feature engineering, XGBoost training and SHAP explainability.' },
       { project: 'Real-time Bike Demand Forecasting', detail: 'MLOps pipeline and Airflow DAGs.' },
+      { project: 'Business Law RAG Assistant', detail: 'End-to-end RAG pipeline, LangChain orchestration and Streamlit UI.' },
     ],
   },
   {
@@ -79,6 +80,7 @@ const skills: SkillDetail[] = [
     description: 'Processing and understanding natural language using modern transformer architectures.',
     usedIn: [
       { project: 'Medical NLP Intelligence System', detail: 'Medical entity extraction, clinical text summarisation via HuggingFace Transformers.' },
+      { project: 'Business Law RAG Assistant', detail: 'Embedding models and LLM-powered answer synthesis for legal queries.' },
     ],
   },
   {
@@ -120,6 +122,15 @@ const skills: SkillDetail[] = [
     description: 'Pre-trained transformer models and tokenisers for fast NLP development.',
     usedIn: [
       { project: 'Medical NLP Intelligence System', detail: 'Fine-tuned BioBERT for medical NER tasks.' },
+      { project: 'Business Law RAG Assistant', detail: 'Sentence-transformer embeddings for semantic retrieval.' },
+    ],
+  },
+  {
+    icon: Lightning,
+    name: 'RAG & LangChain',
+    description: 'Retrieval-Augmented Generation pipelines using LangChain for grounded, source-cited AI answers.',
+    usedIn: [
+      { project: 'Business Law RAG Assistant', detail: 'Full RAG pipeline with FAISS vector store, document chunking, and LLM synthesis.' },
     ],
   },
   {
