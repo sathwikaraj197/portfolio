@@ -92,7 +92,7 @@ const Hero = () => {
   };
 
   const downloadCV = () => {
-    window.open(`${import.meta.env.BASE_URL}Images/Resume_AI %26 ML Engineer.pdf`, '_blank');
+    window.open(`${import.meta.env.BASE_URL}Images/Resume_AI_Engineer.pdf`, '_blank');
   };
 
   return (
