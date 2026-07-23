@@ -1,0 +1,61 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="640" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#05060c"/>
+      <stop offset="100%" stop-color="#0b0a1a"/>
+    </linearGradient>
+    <linearGradient id="stroke6" x1="0" y1="0" x2="640" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+    <radialGradient id="glow6p" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow6c" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="640" height="640" fill="url(#bg6)"/>
+  <circle cx="140" cy="130" r="220" fill="url(#glow6p)"/>
+  <circle cx="510" cy="530" r="240" fill="url(#glow6c)"/>
+
+  <!-- scan panel -->
+  <rect x="140" y="170" width="240" height="240" rx="18" fill="none" stroke="url(#stroke6)" stroke-width="3" opacity="0.9"/>
+  <g stroke="#A78BFA" stroke-width="1.5" opacity="0.3">
+    <line x1="160" y1="210" x2="360" y2="210"/>
+    <line x1="160" y1="242" x2="360" y2="242"/>
+    <line x1="160" y1="274" x2="360" y2="274"/>
+    <line x1="160" y1="306" x2="360" y2="306"/>
+    <line x1="160" y1="338" x2="360" y2="338"/>
+    <line x1="160" y1="370" x2="360" y2="370"/>
+  </g>
+  <line x1="160" y1="256" x2="360" y2="256" stroke="#22D3EE" stroke-width="3" opacity="0.95"/>
+
+  <!-- medical cross -->
+  <g transform="translate(260,290)">
+    <rect x="-7" y="-30" width="14" height="60" rx="4" fill="#A78BFA"/>
+    <rect x="-30" y="-7" width="60" height="14" rx="4" fill="#A78BFA"/>
+  </g>
+
+  <!-- chat / question bubble -->
+  <g transform="translate(345,330)">
+    <path d="M0 0 h150 a20 20 0 0 1 20 20 v90 a20 20 0 0 1 -20 20 h-95 l-35 32 v-32 h-20 a20 20 0 0 1 -20 -20 v-90 a20 20 0 0 1 20-20 z" fill="#0b0a1a" stroke="url(#stroke6)" stroke-width="3"/>
+    <text x="75" y="83" text-anchor="middle" font-family="Georgia, serif" font-size="66" fill="#22D3EE">?</text>
+  </g>
+
+  <!-- waveform (voice readout) -->
+  <g transform="translate(150,480)" stroke="#22D3EE" stroke-width="7" stroke-linecap="round" opacity="0.9">
+    <line x1="0" y1="-6" x2="0" y2="6"/>
+    <line x1="24" y1="-16" x2="24" y2="16"/>
+    <line x1="48" y1="-32" x2="48" y2="32"/>
+    <line x1="72" y1="-12" x2="72" y2="12"/>
+    <line x1="96" y1="-42" x2="96" y2="42"/>
+    <line x1="120" y1="-20" x2="120" y2="20"/>
+    <line x1="144" y1="-8" x2="144" y2="8"/>
+  </g>
+
+  <text x="320" y="600" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" letter-spacing="4" fill="#A78BFA" opacity="0.65">MED-V²QA</text>
+</svg>

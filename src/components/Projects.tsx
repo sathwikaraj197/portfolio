@@ -55,6 +55,33 @@ const Projects = () => {
       tech: ["Python", "LangChain", "FAISS", "Transformers", "Streamlit", "RAG"],
       liveUrl: "",
       githubUrl: "https://github.com/sathwikaraj197/business-law-rag"
+    },
+    {
+      id: 6,
+      title: "Med-V²QA: Medical Visual Question Answering System",
+      description: "Multimodal medical VQA system introducing R-RAD, a clinical-reasoning data augmentation method that lifts closed-ended VQA accuracy from 64.34% to 74.63% on VQA-RAD. Adds LLM-based semantic evaluation (Llama-3.1-8B), CLIP-based batch triage sorting, and voice diagnostic readout for radiologists.",
+      image: "Images/project-6.svg",
+      tech: ["Python", "PyTorch", "FastAPI", "React", "CLIP", "Llama-3.1-8B", "gTTS"],
+      liveUrl: "",
+      githubUrl: "https://github.com/sathwikaraj197"
+    },
+    {
+      id: 7,
+      title: "PixelPicks: Real-Time Recommendation System",
+      description: "Two-stage recommendation engine (Two-Tower retrieval + LightGBM re-ranking) served live via FastAPI over 828K Amazon Reviews interactions, improving Recall@10 by 173% over retrieval alone. Diagnosed and fixed a production latency bottleneck, cutting P50 API latency 47% (85ms to 45ms).",
+      image: "Images/project-7.svg",
+      tech: ["Python", "PyTorch", "FastAPI", "PostgreSQL", "FAISS", "LightGBM", "Streamlit", "Docker"],
+      liveUrl: "",
+      githubUrl: "https://github.com/sathwikaraj197"
+    },
+    {
+      id: 8,
+      title: "Farm Animal Sound Event Detection",
+      description: "Polyphonic sound event detection system that timestamps overlapping animal vocalizations in continuous farm audio using a custom CRNN with per-frame multi-label outputs. Includes a synthetic data generation pipeline and event-based evaluation, reaching a 0.43 macro F1 on unseen audio, deployed via CLI and Flask.",
+      image: "Images/project-8.svg",
+      tech: ["Python", "PyTorch", "Librosa", "CRNN", "Flask", "Signal Processing"],
+      liveUrl: "",
+      githubUrl: "https://github.com/sathwikaraj197"
     }
   ];
 
